@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="WaddleApp" src="./Resources/primary-wide.svg">
+  <h1 align="center" style="color: #FFD60A;">WaddleApp</h1>
 </div>
 
 # ✨ Key Features
@@ -38,4 +38,4 @@ WaddleApp is free software based on **Swiftfin**.
 
 **Original Code Copyright**: © The Jellyfin Project.
 
-Licensed under the GNU GPL v3. You are free to view, modify, and redistribute this code under the terms of the license. See the [LICENSE](LICENSE) file for more details.
+Licensed under the Mozilla Public License v2.0. You are free to view, modify, and redistribute this code under the terms of the license. See the [LICENSE](LICENSE) file for more details.

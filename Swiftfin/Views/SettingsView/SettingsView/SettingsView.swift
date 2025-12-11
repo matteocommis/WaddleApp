@@ -83,7 +83,7 @@ struct SettingsView: View {
                     Label("Privacy Policy", systemImage: "hand.raised.fill")
                 }
             } footer: {
-                Text("WaddleApp è basato su Swiftfin. Rilasciato sotto licenza GNU GPL v3. Il codice sorgente è aperto e modificabile.")
+                Text("WaddleApp è basato su Swiftfin. Rilasciato sotto licenza Mozilla Public License v2.0. Il codice sorgente è aperto e modificabile.")
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
