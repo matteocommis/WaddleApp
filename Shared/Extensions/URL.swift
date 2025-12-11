@@ -30,7 +30,7 @@ extension URL {
         URL(string: NSTemporaryDirectory())!
     }
 
-    static let swiftfinGithub: URL = URL(string: "https://github.com/jellyfin/Swiftfin")!
+    static let swiftfinGithub: URL = URL(string: "https://github.com/matteocommis/WaddleApp.git")!
 
     static let swiftfinGithubIssues: URL = URL(string: "https://github.com/jellyfin/Swiftfin/issues")!
 

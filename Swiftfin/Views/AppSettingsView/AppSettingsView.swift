@@ -41,21 +41,6 @@ struct AppSettingsView: View {
                 router.route(to: .aboutApp)
             }
 
-            Section(L10n.accessibility) {
-
-                ChevronButton(L10n.appIcon) {
-                    // TODO: Create NavigationRoute.appIconSelector
-                    router.route(to: .appIconSelector(viewModel: viewModel))
-                }
-
-                if !selectUserUseSplashscreen {
-                    CaseIterablePicker(
-                        L10n.appearance,
-                        selection: $appearance
-                    )
-                }
-            }
-
             Section {
 
                 Toggle(L10n.useSplashscreen, isOn: $selectUserUseSplashscreen)

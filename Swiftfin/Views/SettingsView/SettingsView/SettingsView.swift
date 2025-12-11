@@ -86,22 +86,6 @@ struct SettingsView: View {
                 }
             }
 
-            Section(L10n.accessibility) {
-                CaseIterablePicker(L10n.appearance, selection: $appearance)
-
-                ChevronButton(L10n.customize) {
-                    router.route(to: .customizeViewsSettings)
-                }
-
-                // Note: uncomment if there are current
-                //       experimental settings
-
-//                ChevronButton(L10n.experimental)
-//                    .onSelect {
-//                        router.route(to: .experimentalSettings)
-//                    }
-            }
-
             Section {
                 ColorPicker(L10n.accentColor, selection: $accentColor, supportsOpacity: false)
             } footer: {

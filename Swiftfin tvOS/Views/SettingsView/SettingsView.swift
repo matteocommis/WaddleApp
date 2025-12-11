@@ -76,18 +76,6 @@ struct SettingsView: View {
                     }
                 }
 
-                Section(L10n.accessibility) {
-
-                    ChevronButton(L10n.customize) {
-                        router.route(to: .customizeViewsSettings)
-                    }
-//
-//                    ChevronButton(L10n.experimental)
-//                        .onSelect {
-//                            router.route(to: \.experimentalSettings)
-//                        }
-                }
-
                 Section {
 
                     ChevronButton(L10n.logs) {

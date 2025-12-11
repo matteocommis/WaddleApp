@@ -20,7 +20,7 @@ struct AboutAppView: View {
                         .aspectRatio(1, contentMode: .fit)
                         .frame(height: 150)
 
-                    Text(verbatim: "Swiftfin")
+                    Text(verbatim: "WaddleApp")
                         .fontWeight(.semibold)
                         .font(.title2)
                 }
@@ -42,15 +42,6 @@ struct AboutAppView: View {
                 ) {
                     UIApplication.shared.open(.swiftfinGithub)
                 }
-
-                ChevronButton(
-                    L10n.bugsAndFeatures,
-                    systemName: "plus.circle.fill",
-                    external: true
-                ) {
-                    UIApplication.shared.open(.swiftfinGithubIssues)
-                }
-                .symbolRenderingMode(.monochrome)
 
                 ChevronButton(
                     L10n.settings,
