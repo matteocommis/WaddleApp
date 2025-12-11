@@ -410,16 +410,11 @@ struct SelectUserView: View {
         .background {
             if selectUserUseSplashscreen, splashScreenImageSources.isNotEmpty {
                 ZStack {
-                    Color.clear
+                    Color.systemBackground // Ensure opaque background
 
-                    ImageView(splashScreenImageSources)
-                        .pipeline(.Swiftfin.local)
-                        .aspectRatio(contentMode: .fill)
-                        .transition(.opacity.animation(.linear(duration: 0.1)))
-                        .id(splashScreenImageSources)
-
-                    Color.black
-                        .opacity(0.9)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
                 }
                 .ignoresSafeArea()
             }

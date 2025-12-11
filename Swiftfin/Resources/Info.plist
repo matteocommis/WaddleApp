@@ -75,8 +75,7 @@ network.</string>
 	<true/>
 	<key>UILaunchScreen</key>
 	<dict>
-		<key>UIImageName</key>
-		<string>jellyfin-blob-blue</string>
+		<!-- Removed UIImageName to show blank background -->
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
