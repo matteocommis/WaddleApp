@@ -116,7 +116,7 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
             info.itemID = item.baseItem.id
             info.mediaSourceID = item.mediaSource.id
             info.playSessionID = item.playSessionID
-            info.positionTicks = seconds?.ticks
+            info.positionTicks = Int((seconds?.seconds ?? 0) * 10_000_000)
             info.sessionID = item.playSessionID
             info.subtitleStreamIndex = item.selectedSubtitleStreamIndex
 
@@ -137,7 +137,7 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
             var info = PlaybackStopInfo()
             info.itemID = item.baseItem.id
             info.mediaSourceID = item.mediaSource.id
-            info.positionTicks = seconds?.ticks
+            info.positionTicks = Int((seconds?.seconds ?? 0) * 10_000_000)
             info.sessionID = item.playSessionID
 
             let request = Paths.reportPlaybackStopped(info)
@@ -146,6 +146,8 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
     }
 
     private func sendProgressReport(for item: MediaPlayerItem, seconds: Duration?, isPaused: Bool = false) {
+
+        print("✅ KEEP ALIVE: Reporting progress to Jellyfin server...")
 
         #if DEBUG
         guard Defaults[.sendProgressReports] else { return }
@@ -158,7 +160,7 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
             info.itemID = item.baseItem.id
             info.mediaSourceID = item.mediaSource.id
             info.playSessionID = item.playSessionID
-            info.positionTicks = seconds?.ticks
+            info.positionTicks = Int((seconds?.seconds ?? 0) * 10_000_000)
             info.sessionID = item.playSessionID
             info.subtitleStreamIndex = item.selectedSubtitleStreamIndex
 

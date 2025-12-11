@@ -6,6 +6,7 @@
 // Copyright (c) 2025 Jellyfin & Jellyfin Contributors
 //
 
+import AVFoundation
 import Combine
 import Defaults
 import Engine
@@ -492,6 +493,14 @@ extension VideoPlayer {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+
+            // Force audio playback even if silent switch is on
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                logger.error("Failed to set audio session: \(error)")
+            }
 
             view.backgroundColor = .black
 

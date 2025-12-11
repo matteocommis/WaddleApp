@@ -50,10 +50,10 @@ struct SettingsView: View {
             .foregroundStyle(accentColor.overlayColor, accentColor)
 
             Section(L10n.videoPlayer) {
-                CaseIterablePicker(
-                    L10n.videoPlayerType,
-                    selection: $videoPlayerType
-                )
+//                CaseIterablePicker(
+//                    L10n.videoPlayerType,
+//                    selection: $videoPlayerType
+//                )
 
                 ChevronButton(L10n.nativePlayer) {
                     router.route(to: .nativePlayerSettings)

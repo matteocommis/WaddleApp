@@ -284,9 +284,11 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
         let audioSession = AVAudioSession.sharedInstance()
 
         do {
-            try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setCategory(.playback, mode: .moviePlayback)
             try audioSession.setActive(true)
-            logger.trace("Started AVAudioSession")
+            // Extra reinforcement for persistent audio
+            try? audioSession.setCategory(.playback, mode: .moviePlayback)
+            logger.trace("Started AVAudioSession (Forced .playback)")
         } catch {
             logger.critical("Unable to activate AVAudioSession instance: \(error.localizedDescription)")
             throw error
