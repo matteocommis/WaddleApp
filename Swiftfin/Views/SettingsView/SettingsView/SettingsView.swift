@@ -96,6 +96,19 @@ struct SettingsView: View {
                 router.route(to: .log)
             }
 
+            Section {
+                NavigationLink(destination: PrivacyPolicyView()) {
+                    Label("Privacy Policy", systemImage: "hand.raised.fill")
+                }
+            } footer: {
+                Text("WaddleApp è basato su Swiftfin. Rilasciato sotto licenza GNU GPL v3. Il codice sorgente è aperto e modificabile.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top)
+            }
+
             #if DEBUG
 
             ChevronButton("Debug") {
