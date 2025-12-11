@@ -1,62 +1,41 @@
 <div align="center">
-  <img alt="Swiftfin" src="./Resources/primary-wide.svg">
-
-  <h1>Swiftfin</h1>
-  <img src="https://img.shields.io/badge/iOS-16+-red"/>
-  <img src="https://img.shields.io/badge/tvOS-17+-red"/>
-  <img src="https://img.shields.io/badge/Jellyfin-10.11-9962be"/>
-  
-  <a href="https://translate.jellyfin.org/engage/swiftfin/">
-    <img src="https://translate.jellyfin.org/widgets/swiftfin/-/svg-badge.svg"/>
-  </a>
-  <a href="https://matrix.to/#/#jellyfin:matrix.org">
-    <img src="https://img.shields.io/matrix/jellyfin:matrix.org">
-  </a>
-  <a href="https://discord.gg/zHBxVSXdBV">
-    <img src="https://img.shields.io/badge/Talk%20on-Discord-brightgreen">
-  </a>
+  <img alt="WaddleApp" src="./Resources/primary-wide.png">
 </div>
 
-<p align="center">
-  <b>Swiftfin</b> is a modern video client for the <a href="https://github.com/jellyfin/jellyfin">Jellyfin</a> media server. Made using Swift to maximize direct play with the power of <b>VLC</b> and look <b>native</b> on all classes of Apple devices.
-</p>
+# ✨ Key Features
+WaddleApp strips away complexity to offer a focused streaming experience:
 
-## ⚡️ Download
+- **🟡 Waddle Theme**: A fully customized User Interface with a distinct Yellow accent color and custom branding.
 
-<a href="https://apps.apple.com/us/app/swiftfin/id1604098728">
-  <img height=75 alt="Download on the Apple App Store" src="./Resources/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"/>
-</a>
+- **🔒 Dedicated Server**: Hardcoded connection logic. The app bypasses server discovery and connects directly to the private instance, ensuring security and ease of use.
 
-## 🛠️ TestFlight
+- **📱 Native Player Only**: Forces the use of Apple's AVPlayer for:
+  - Best-in-class battery life.
+  - Full AirPlay and Picture-in-Picture support.
+  - Correct audio handling (plays even in Silent Mode).
 
-Use the TestFlight version to test new features and bug fixes before being published to the App Store. We are grateful for your time and resources for reporting new bugs.
+- **🚀 Instant Launch**: No "Welcome" screens or server selection. The app boots straight into the login or home screen.
 
-> [!NOTE]
-> Only iOS has a TestFlight version. See [this discussion](https://github.com/jellyfin/Swiftfin/discussions/1294) for tvOS updates.
+- **💾 Smart Progress**: Custom logic ensures playback progress is correctly reported to the server (Ticks/Seconds conversion fix).
 
-<a href="https://testflight.apple.com/join/SqNPfdxq">
-  <img height=75 alt="Get the beta on TestFlight" src="./Resources/testflight.svg"/>
-</a>
+# ⚠️ Build Requirements
+This is a private fork. To build this project locally, you must note:
 
-## 📖 Documentation
+**Secrets**: The server URL is stored in a `Secrets.swift` file which is excluded from this repository for security. You must create it manually in the source folder:
 
-Swiftfin provides detailed documentation to help you understand key aspects of the app and its development approach:
+```swift
+struct Secrets {
+    static let serverAddress = "https://your.server.url"
+}
+```
 
-- [🎞️ Library Support](https://github.com/jellyfin/Swiftfin/blob/main/Documentation/libraries.md) — Information on **library compatibility** and supported media types in Swiftin.
-- [🎬 Media Playback](https://github.com/jellyfin/Swiftfin/blob/main/Documentation/players.md) — Learn about Swiftfin's **Native** and **Swiftfin** players and how their features vary.
-- [🧩 OS Version Support](https://github.com/jellyfin/Swiftfin/blob/main/Documentation/version.md) — Read about how we determine the **minimum supported OS** and which versions of iOS & tvOS are supported.
-- [💜 Supporting Development](https://jellyfin.org/docs/general/contributing/direct-donations) — Learn how you can **support the project developers** and help keep Swiftfin improving.
+**Signing**: You need a valid Apple Developer Account to sign and deploy the app to physical devices.
 
-## ⚙️ Development
+# ⚖️ License & Credits
+WaddleApp is free software based on **Swiftfin**.
 
-Thank you for your interest in Swiftfin! Please check out the [Contribution Guidelines](https://github.com/jellyfin/Swiftfin/blob/main/Documentation/contributing.md) to get started.
+**Modifications Copyright**: © 2024 Matteo Commis.
 
-## 📚 Translations
+**Original Code Copyright**: © The Jellyfin Project.
 
-**Don't see Swiftfin in your language?**
-
-Check out our [Weblate instance](https://translate.jellyfin.org/projects/swiftfin/) to help translate Swiftfin and other Jellyfin projects.
-
-<a href="https://translate.jellyfin.org/engage/swiftfin/">
-<img src="https://translate.jellyfin.org/widgets/swiftfin/-/multi-auto.svg"/>
-</a>
+Licensed under the GNU GPL v3. You are free to view, modify, and redistribute this code under the terms of the license. See the [LICENSE](LICENSE) file for more details.
