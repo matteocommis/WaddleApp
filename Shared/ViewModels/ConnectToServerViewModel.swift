@@ -82,6 +82,12 @@ final class ConnectToServerViewModel: ViewModel {
 
         guard let url = URL(string: formattedURL) else { throw ErrorMessage("Invalid URL") }
 
+        // Check if server already exists to avoid "Server already exists" error on re-connect
+        if let existingServer = try? SwiftfinStore.dataStack.fetchOne(From<ServerModel>().where(\.$currentURL == url)) {
+            events.send(.connected(existingServer.state))
+            return
+        }
+
         let client = JellyfinClient(
             configuration: .swiftfinConfiguration(url: url),
             sessionDelegate: URLSessionProxyDelegate(logger: NetworkLogger.swiftfin())
