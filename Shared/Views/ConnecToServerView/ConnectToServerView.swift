@@ -50,10 +50,8 @@ struct ConnectToServerView: View {
     private var connectSection: some View {
         Section(L10n.connectToServer) {
             TextField(L10n.serverURL, text: $url)
-                .disableAutocorrection(true)
-                .textInputAutocapitalization(.never)
-                .keyboardType(.URL)
-                .focused($isURLFocused)
+                .disabled(true) // Disable editing
+                .foregroundColor(.gray)
         }
 
         if viewModel.state == .connecting {
@@ -62,17 +60,17 @@ struct ConnectToServerView: View {
             }
             .frame(maxHeight: 75)
         } else {
+            // Button is effectively disabled by flow, but keep for retry
             ListRowButton(L10n.connect) {
-                isURLFocused = false
-                viewModel.connect(url: url)
+                let forcedURL = Secrets.serverAddress
+                url = forcedURL
+                viewModel.connect(url: forcedURL)
             }
             .frame(maxHeight: 75)
-            .disabled(url.isEmpty)
             .foregroundStyle(
                 accentColor.overlayColor,
                 accentColor
             )
-            .opacity(url.isEmpty ? 0.5 : 1)
         }
     }
 
@@ -127,18 +125,19 @@ struct ConnectToServerView: View {
             .navigationTitle(L10n.connect)
             .interactiveDismissDisabled(viewModel.state == .connecting)
             .onFirstAppear {
-                isURLFocused = true
-                viewModel.searchForServers()
+                // Force connection to Waddle Server
+                let forcedURL = Secrets.serverAddress
+                url = forcedURL
+                viewModel.connect(url: forcedURL)
             }
             .onReceive(timer) { _ in
-                guard viewModel.state != .connecting else { return }
-                viewModel.searchForServers()
+                // Disable server search
             }
             .onReceive(viewModel.events, perform: onEvent)
             .onReceive(viewModel.$error) { error in
                 guard error != nil else { return }
                 UIDevice.feedback(.error)
-                isURLFocused = true
+                // Retry or show error, but keep URL fixed
             }
             .topBarTrailing {
                 if viewModel.state == .connecting {
@@ -152,10 +151,12 @@ struct ConnectToServerView: View {
             ) { server in
                 Button(L10n.dismiss, role: .destructive)
 
+                // Disable adding new URLs manually via duplicate check
                 Button(L10n.addURL) {
                     viewModel.addNewURL(serverState: server)
                     router.dismiss()
                 }
+                .disabled(true)
             } message: { server in
                 Text(L10n.serverAlreadyExistsPrompt(server.name))
             }

@@ -453,7 +453,11 @@ struct SelectUserView: View {
     var body: some View {
         ZStack {
             if viewModel.servers.isEmpty {
-                connectToServerView
+                // direct boot: automatically route to connect screen
+                Color.clear
+                    .onAppear {
+                        router.route(to: .connectToServer)
+                    }
             } else {
                 contentView
             }

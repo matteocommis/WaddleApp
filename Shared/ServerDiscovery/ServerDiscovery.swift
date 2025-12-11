@@ -19,11 +19,14 @@ class ServerDiscovery {
     private var connection: UDPBroadcastConnection?
 
     init() {
-        connection = try? UDPBroadcastConnection(
-            port: 7359,
-            handler: handleServerResponse,
-            errorHandler: handleError
-        )
+        // Discovery disabled
+        /*
+         connection = try? UDPBroadcastConnection(
+             port: 7359,
+             handler: handleServerResponse,
+             errorHandler: handleError
+         )
+         */
     }
 
     var discoveredServers: AnyPublisher<ServerResponse, Never> {
@@ -35,7 +38,8 @@ class ServerDiscovery {
     private var discoveredServersPublisher = PassthroughSubject<ServerResponse, Never>()
 
     func broadcast() {
-        try? connection?.sendBroadcast("Who is JellyfinServer?")
+        // Discovery disabled for single-server mode
+        // try? connection?.sendBroadcast("Who is JellyfinServer?")
     }
 
     func close() {
