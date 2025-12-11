@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="WaddleApp" src="./Resources/primary-wide.png">
+  <img alt="WaddleApp" src="./Resources/primary-wide.svg">
 </div>
 
 # ✨ Key Features
