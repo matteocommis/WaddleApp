@@ -108,14 +108,6 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.top)
             }
-
-            #if DEBUG
-
-            ChevronButton("Debug") {
-                router.route(to: .debugSettings)
-            }
-
-            #endif
         }
         .navigationTitle(L10n.settings)
         .navigationBarTitleDisplayMode(.inline)
