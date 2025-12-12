@@ -6,6 +6,7 @@
 // Copyright (c) 2025 Jellyfin & Jellyfin Contributors
 //
 
+import AVFoundation
 import Factory
 import SwiftUI
 
@@ -56,6 +57,17 @@ struct VideoPlayer: View {
             PlaybackControls()
         }
         .onAppear {
+            // FORCE AUDIO SESSION ACTIVATION
+            do {
+                let session = AVAudioSession.sharedInstance()
+                // Configure specifically for movie playback
+                try session.setCategory(.playback, mode: .moviePlayback, options: [.allowAirPlay, .duckOthers])
+                try session.setActive(true, options: .notifyOthersOnDeactivation)
+                print("🔊 SWIFTFIN PLAYER: Audio Session FORCE Activated.")
+            } catch {
+                print("🔴 SWIFTFIN PLAYER: Failed to activate audio session: \(error)")
+            }
+
             manager.proxy = proxy
             manager.start()
         }

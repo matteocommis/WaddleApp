@@ -194,7 +194,7 @@ extension Defaults.Keys {
             default: VideoPlayerActionButton.defaultMenuActionButtons
         )
         static let resumeOffset: Key<Int> = UserKey("resumeOffset", default: 0)
-        static let videoPlayerType: Key<VideoPlayerType> = UserKey("videoPlayerType", default: .native)
+        static let videoPlayerType: Key<VideoPlayerType> = UserKey("videoPlayerType", default: .swiftfin)
 
         enum Gesture {
 

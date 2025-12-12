@@ -50,10 +50,10 @@ struct SettingsView: View {
             .foregroundStyle(accentColor.overlayColor, accentColor)
 
             Section(L10n.videoPlayer) {
-//                CaseIterablePicker(
-//                    L10n.videoPlayerType,
-//                    selection: $videoPlayerType
-//                )
+                CaseIterablePicker(
+                    L10n.videoPlayerType,
+                    selection: $videoPlayerType
+                )
 
                 ChevronButton(L10n.nativePlayer) {
                     router.route(to: .nativePlayerSettings)
@@ -83,12 +83,14 @@ struct SettingsView: View {
                     Label("Privacy Policy", systemImage: "hand.raised.fill")
                 }
             } footer: {
-                Text("WaddleApp è basato su Swiftfin. Rilasciato sotto licenza Mozilla Public License v2.0. Il codice sorgente è aperto e modificabile.")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top)
+                Text(
+                    "WaddleApp è basato su Swiftfin. Rilasciato sotto licenza Mozilla Public License v2.0. Il codice sorgente è aperto e modificabile."
+                )
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+                .padding(.top)
             }
         }
         .navigationTitle(L10n.settings)
